@@ -5,7 +5,7 @@
  * images.
  */  
 
-/*
+
 async function dogAPI(){
     try{
     const response = await fetch("https://dog.ceo/api/breeds/image/random/20")
@@ -40,4 +40,3 @@ async function dogAPI(){
  }
 
  displayImg();
-*/

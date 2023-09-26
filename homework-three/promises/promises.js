@@ -28,6 +28,9 @@ async function displayQuote(){
 
         
         })
+    }else{
+        console.log("Failed:", new Error("Falied to display images."))
+        document.write("Wasn't able to display Quotes. Check to see if you successful retrieved element from HTML Page")
     }
 }
 
