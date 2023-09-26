@@ -3,7 +3,9 @@
  * The function `dogAPI` fetches 20 random dog images from the Dog API.
  * @returns the results of the API call, which is a JSON object containing information about random dog
  * images.
- */
+ */  
+
+/*
 async function dogAPI(){
     try{
     const response = await fetch("https://dog.ceo/api/breeds/image/random/20")
@@ -38,3 +40,4 @@ async function dogAPI(){
  }
 
  displayImg();
+*/
