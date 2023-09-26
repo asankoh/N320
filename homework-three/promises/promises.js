@@ -13,11 +13,6 @@ var quoteAPI = new Promise((resolve, reject) =>{
     })
 })
 
-quoteAPI.then(() =>{
-    document.write("Basic Promise Resolved")
-}, () => {
-    document.write("Basic Promise is rejected!")
-})
 
 async function displayQuote(){
    const data =  await quoteAPI;
@@ -28,8 +23,9 @@ async function displayQuote(){
     if(flexContainer){
         data.results.forEach((quote) => {
             const quoteText = document.createElement("p");
-            quoteText.innerHTML = quote.results;
+            quoteText.innerHTML = `"${quote.content}" <br> -${quote.author}`;
             flexContainer.appendChild(quoteText);
+
         
         })
     }

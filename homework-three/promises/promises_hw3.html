@@ -6,9 +6,62 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+         .flex-container{
+            width: 900px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        p{
+            background-color: lightgrey;
+            width: 400px;
+            height: 90px;
+            margin-right: 20px;
+            line-height: 120%;
+            border-radius: 20px;
+            text-align: right;
+            font-weight: bold;
+        }
+    </style>
     <div class="flex-container"></div>
 
-    
+    <script>
+        var quoteAPI = new Promise((resolve, reject) =>{
+    fetch("https://api.quotable.io/quotes?limit=20")
+    .then((response) =>{
+        if(!response.ok){
+            reject("Fetch Failed");
+            console.log("Error in retrieving API from fetch statement")
+            return
+        } 
+        return response.json();
+    })
+    .then((results) =>{
+        resolve(results)
+    })
+})
+
+
+async function displayQuote(){
+   const data =  await quoteAPI;
+    console.log(data)
+
+    const flexContainer = document.querySelector('.flex-container');
+
+    if(flexContainer){
+        data.results.forEach((quote) => {
+            const quoteText = document.createElement("p");
+            quoteText.innerHTML = `"${quote.content}" <br> -${quote.author}`;
+            flexContainer.appendChild(quoteText);
+
+        
+        })
+    }
+}
+
+displayQuote()
+    </script>
     <script src="promises.js"></script>
 </body>
 </html>
