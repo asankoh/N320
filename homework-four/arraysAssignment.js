@@ -13,18 +13,17 @@ const students = [
     ];
 
 
+/* using the `forEach` method to iterate over each element in the `students` array. */
 students.forEach((studentValue) =>{
     console.log("Students: ", studentValue.name)
     document.getElementsByTagName("p")[0].innerHTML += ` ${studentValue.name}`
-   
 
 })
 
 
-/* The code `var gradeFN = students.every(students => {
-    return students.grades.every(grade => grade >= 60);
-});` is checking if every student in the `students` array has grades that are greater than or equal
+/* is checking if every student in the `students` array has grades that are greater than or equal
 to 60. */
+
 var gradeFN = students.every(function(studentValue){
     console.log(studentValue.grades)
     return studentValue.grades.every(grades => grades >= 60)
@@ -39,22 +38,28 @@ var perfectGradeCheck = students.some(function(studentValue){
 
 document.getElementsByTagName("p")[2].innerHTML += `${perfectGradeCheck}`
 
-
-/*function averageFn(){
-    let studentGradeAvg = students.filter((studentValue) =>{
-        let reduceGradeAvg = studentValue.grades.reduce((accum, nextvalue) => accum + nextvalue, 0)
+let averageFilter = students.filter((studentValue) =>{
+        let reduceGradeAvg = studentValue.grades.reduce((accum, nextvalue)=>{
+        return accum + nextvalue;
+        }, 0)
         let average = reduceGradeAvg / 4;
-        return average >= 90;
-        })
-        return studentGradeAvg.map(studentValue.name)
-    }
+        if(average >=90){
+            document.getElementsByTagName("p")[3].innerHTML += ` ${studentValue.name}`
+        }
+    })
 
-averageFn() 
+    const studentSummaries = students.map((studentValue) =>{
+        let studentSum = studentValue.grades.reduce((accum, nextValue) =>{
+            return accum + nextValue;
+        },0)
+        let average = studentSum / 4;
+        document.getElementById("studentAvgs").innerHTML += `<br>  Name: ${studentValue.name}, Average Grade: ${average}`
 
-document.getElementsByTagName("p")[3].innerHTML += `${studentGradeAvg}`*/
+    })
+  
 
 let gradeLength = students.reduce((accum, nextValue) =>{
     return accum + nextValue.grades.length
-})
+}, 0)
 
-document.getElementsByTagName("p")[5].innerHTML += `${gradeLength}`
+document.getElementsByTagName("p")[5].innerHTML += ` ${gradeLength}`
