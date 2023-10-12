@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+</head>
+<body>
+    
+
+    <script>
+        //For Loop example
+        for(let i = 0; i<5; i++){
+            console.log(i);
+        }
+
+        //While Loop
+        //The initial value has to be declared outside the loop for while loops
+        let w = 0;
+        while(w<5){
+            console.log("While: ", w)
+            w++;
+        }
+
+        //Do While
+        //Do while loop runs even if the condition is true.
+        // Do while loop will run at least once regardless if the condtional statement is true or false.
+        //e.g using do while loop would be best for purchasing tickets because it will let the user know if 
+        //tickets are sold out
+        let d = 10;
+        do{
+            console.log("Do While: ", d)
+            d--;
+        } while(d<5);
+
+
+
+        const Course = {
+            "cNum": "N320",
+            "cTItle": "Vue & Advanced Javascript",
+            "prerq": false,
+            "offering": [
+                "Fall", "Spring", "Summer"
+            ],
+            "limit": 20
+        }
+
+        let seasons = ["Fall", "Winter", "Spring", "Summer"]
+        let holiday = "Halloween"
+        //For...in
+        // determines if it is an iterable object
+        for(property in Course){
+            console.log(property + ": "+ Course[property]);
+        }
+
+        for(s in seasons){
+            console.log(s+":"+seasons[s]);
+        }
+
+        for(h in holiday){
+            console.log(h+":"+holiday[h]);
+        }
+
+
+        //For of
+        // The difference between for in and for of is that
+        // for of doesn't work on objects or arrayed keys or key values. 
+    /*    for(p of Course){
+            console.log(p + ": "+ Course[p]);
+        } */
+
+        for(s of seasons){
+            console.log(s);
+        }
+
+        for(h of holiday){
+            console.log(h);
+        }
+    </script>
+</body>
+</html>
