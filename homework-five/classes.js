@@ -42,7 +42,7 @@ class Catalog{
     }
 
      addItem(...items){
-     this.itemList.push(...items)
+         this.itemList.push(...items)
     }
 
     removeItem(itemID){
@@ -52,32 +52,43 @@ class Catalog{
     }
 
     totalValue(){
-        let total = total.value;
-        this.items.reduce((accum, total) =>{
-            return accum + total
+        this.itemList.reduce((accum, item) =>{
+            return accum + item.value
         },0)
     }
 
     displayCatalog(){
-        let commonInfo = `${items.title} - ${items.pub_year}  - ${items.value}`
+        
+      //  let commonInfo = `${items.title} - ${items.pub_year}  - ${items.value}`
 
         this.itemList.forEach(items =>{
-            document.getElementsByTagName('div')[0].innerHTML += `${commonInfo}`;
-       
+          //  document.getElementsByTagName('div').innerHTML += `${commonInfo}`;
+          //  console.log(commonInfo)
             if(items.author){
-                document.getElementsByTagName('div')[0].innerHTML += `Author: ${items.author}`
-                document.getElementsByTagName('div')[0].innerHTML += `Genre: ${items.genre}`
-            } 
+               return `${this.title} - ${this.value} - (Author: ${this.author},Genre: ${this.genre})`
+            } else if(items.director){
+                return `${this.title} - ${this.value} - (Director: ${this.director},Runtime: ${this.runtime})`
+            }else{
+                return `${this.title} - ${this.value} - (Artist: ${this.artist},Number of Songs: ${this.songs_number})`
+            }
         })
 
     }
     
 }
 
-let catalog = new catalog;
+var bookOne = new Book(1, 'Big Nate', 2009, 10.99, 'Unknown', "Fiction")
+var cdOne = new CD(2, "Dangerous", 2000, 80.99, "Michael Jackson", 12)
+var dvdOne = new DVD(3, "Halloween", 1978, 8.99, "John Carpenter", 98)
 
-var bookOne = new Book('Big Nate', 2009, 10.99, 'Unknown', "Fiction")
 
-catalog.addItem("bookOne")
+console.log(bookOne)
 
-catalog.displayCatalog(catalogDiv[0])
+let catalog = new Catalog();
+
+catalog.addItem(bookOne, cdOne, dvdOne)
+catalog.displayCatalog(catalogDiv)
+
+let updatedCatalog = new Catalog();
+updatedCatalog.addItem(bookOne, cdOne, dvdOne)
+updatedCatalog.removeItem(2);

@@ -10,7 +10,13 @@
     <section id="myGoals">
         <p>{{courseGoalOne}}</p>
         <p>{{courseGoalTwo}}</p>
-        <p></p>
+        <p><a v-bind:href="vueLink">Vue</a></p>
+        <p>My Goal: {{newGoal()}} </p>
+        <p v-html="courseGoalThree"></p>
+
+        <button v-on:click="addMore(5)">Add</button>
+        <button v-on:click="counter--">Remove</button>
+        <p>Count: {{counter}}</p>
     </section>
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
