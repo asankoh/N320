@@ -25,7 +25,7 @@
 
        <label style="display: block; margin-top: 30px;" for="">New Horror Movie: 
         <input type="text" v-model = newMovie>
-        <button style="display: block;">Add {{newMovie}} to List. </button>
+        <button v-on:click = "addtoList" style="display: block;">Add {{newMovie}} to List. </button>
        </label> 
     </div>
 </body>

@@ -58,7 +58,8 @@ methods: {
         }
     },
     addtoList(){
-
+        let newId = this.movieList.length +1;
+        this.movieList.push({newId, newMovie})
     }
 },
 })
