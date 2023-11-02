@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="app.js" defer></script>
+    <title>Homework Six (Vue)</title>
+</head>
+<body>
+    <div id="info">
+        <h1>{{name}}</h1>
+        <h2>{{course}}</h2>
+        <h3>{{getTodayDate(7)}}</h3>
+        <h4 style="border-bottom: 1px solid black; padding-bottom: 30px;">Difficulty Level: {{number}}/5</h4>
+
+        <h1>List of Horror Movies</h1>
+        <ul v-for="movie in movieList" v-bind:key="movieList.id">
+            <li>
+                {{movie.name}}
+            </li>
+        </ul>
+        <p>{{movie}}</p>
+        <button v-on:click="movieMsg" >Favorite Horror Movie</button>
+
+       <label style="display: block; margin-top: 30px;" for="">New Horror Movie: 
+        <input type="text" v-model = newMovie>
+        <button style="display: block;">Add {{newMovie}} to List. </button>
+       </label> 
+    </div>
+</body>
+</html>

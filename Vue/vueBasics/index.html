@@ -14,12 +14,30 @@
         <p>My Goal: {{newGoal()}} </p>
         <p v-html="courseGoalThree"></p>
 
-        <button v-on:click="addMore(5)">Add</button>
-        <button v-on:click="counter--">Remove</button>
+        <button v-on:click="addMore(1)">Add</button>
+        <button v-on:click="remove()">Remove</button>
         <p>Count: {{counter}}</p>
+
+       <!-- <input type="text" v-bind:value="name"
+        v-on:input="setName">-->
+        <input type="text" v-model="name">
+        <p>{{name}}</p>
+        <p>{{fullName}}</p>
+        <p>Name Length: {{nameData[0]}}</p>
+        <p>Middle Character: {{nameData[1]}}</p>
+
+        <button v-on:click="resetName">Reset Name</button>
+
+        <form v-on:submit.prevent="submitForm">
+            <input v-on:keyup.space='consoleMe' type="text">
+            <button>Sign Up</button>
+        </form>
+
     </section>
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
+
+<!--($event,' Myers') -->
