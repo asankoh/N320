@@ -20,13 +20,18 @@
                 {{movie.name}}
             </li>
         </ul>
+        <ul>
+            {{newMovie}}
+        </ul>
         <p>{{movie}}</p>
         <button v-on:click="movieMsg" >Favorite Horror Movie</button>
 
        <label style="display: block; margin-top: 30px;" for="">New Horror Movie: 
-        <input type="text" v-model = newMovie>
-        <button v-on:click = "addtoList" style="display: block;">Add {{newMovie}} to List. </button>
+        <input type="text" v-model = "newMovie">
+        <button @click="addtoList" style="display: block;">Add {{newMovie}} to List. </button>
        </label> 
+       <p >{{newMovieMsg}}</p>
+
     </div>
 </body>
 </html>

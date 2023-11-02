@@ -40,6 +40,7 @@ data(){
         ],
        movie: "",
        newMovie: '',
+       newMovieMsg: '',
        counter: 0
     }
 },
@@ -58,8 +59,13 @@ methods: {
         }
     },
     addtoList(){
-        let newId = this.movieList.length +1;
-        this.movieList.push({newId, newMovie})
+       if(this.newMovie != ""){
+           this.movieList.push({id: this.movieList, name: this.newMovie})
+           this.newMovieMsg = `${this.newMovie} has been added to your list!`
+           this.newMovie = '';
+       } else{
+        alert("Insert new movie!")
+       }
     }
 },
 })
