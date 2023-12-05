@@ -1,4 +1,4 @@
 <template>
-  <navigation-header></navigation-header>
+  <navigation></navigation>
   <RouterView/>
 </template>

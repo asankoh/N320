@@ -2,7 +2,7 @@
   <header>
     <nav>
       <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/">Team</RouterLink>
+      <RouterLink to="/teams">Team</RouterLink>
     </nav>
   </header>
 </template>

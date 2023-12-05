@@ -3,7 +3,7 @@
     <search-member :members="members" @search-member="searchMembersBtn"></search-member>
     <div class="memberInfo">
       <member-data
-        v-for="member in filterList"
+        v-for="member in searchedList"
         :key="member.id"
         :name="member.name"
         :phone="member.phone"
@@ -124,12 +124,13 @@ export default {
         }
       ],
       enteredName: "",
-      filterList: [],
+      searchedList: []
     };
   },
   methods: {
     searchMembersBtn() {
-      this.filterList = this.members.filter((member) => {
+      this.searchedList = this.members.filter((member) => {
+        
         return member.name 
       });
     },
