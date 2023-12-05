@@ -21,11 +21,23 @@ export default {
             title: "Vue 3 Development"
       },
     }
+},
+provide: {
+    project:{
+        type: 'final',
+        title: 'Conference Sessions Applications',
+        dueDate: '12/08/2023',
+        points: 150
+      }
 }
 }
 </script>
 
 
-<style scoped>
-
+<style>
+a.router-link-active{
+    text-decoration: underline;
+    color: red;
+    font-size: large;
+}
 </style>

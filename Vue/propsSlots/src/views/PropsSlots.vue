@@ -23,10 +23,17 @@
       {{ s.sName }}</li>
     </ul>
   </slot-two> -->
+  <div>
+    <project-data></project-data>
+  </div>
 </div> 
 </template>
 <script>
+import ProjectData from '../components/ProjectData.vue'
 export default {
+    components: {
+      ProjectData
+    },
     props: ['greeting', 'who', 'count', 'myVue', 'book']
 }
 
