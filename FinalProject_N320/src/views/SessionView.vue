@@ -1,5 +1,6 @@
 <template>
-    <session-data v-for="session in sessionList"
+  <h4>{{ sessionAmount }}</h4>
+    <session-data v-for="session in sessions"
     :sessions="sessions"
     :key ="session.id"
     :title="session.title"
@@ -13,7 +14,12 @@
 </template>
 
 <script>
+import SessionData from '../components/SessionData.vue';
+
 export default {
+  components: {
+    SessionData
+  },
     data() {
     return {
     sessions: [
@@ -126,5 +132,10 @@ export default {
 </script>
 
 <style>
-    
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+    body{
+      /* background-color: rgba(7, 54, 67, 0.8); */
+      background-color: #f6ede2;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
 </style>

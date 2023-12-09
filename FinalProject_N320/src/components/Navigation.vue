@@ -1,8 +1,8 @@
 <template>
     <header>
         <nav>
-           <RouterLink to="/">Home</RouterLink>
-           <RouterLink to="/user">User</RouterLink>
+           <RouterLink to="/">Sessions</RouterLink>
+           <RouterLink to="/user">My Sessions</RouterLink>
            <!--This is how to create a link using the name element from routes
            <RouterLink :to="{name:'props'}">Props</RouterLink> -->
         </nav>
@@ -10,17 +10,20 @@
 </template>
 
 <style>
+
+
 nav{
     max-width: 100%;
-    background-color: #ADD8e6;
+    height: 60px;
     display: flex;
+    align-items: center;
     justify-content: end;
-    border-radius: 20px;
 }
 
 nav a{
+    font-size: 18px;
     text-decoration: none;
-    padding: 30px;
-    color: white;
+    margin: 0 120px;
+    color: #223a2b;
 }
 </style>

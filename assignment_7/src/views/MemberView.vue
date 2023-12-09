@@ -124,15 +124,16 @@ export default {
         }
       ],
       enteredName: "",
-      searchedList: []
+      searchedList: [],
+      radioSelect: null
     };
   },
   methods: {
     searchMembersBtn() {
       this.searchedList = this.members.filter((member) => {
-        
-        return member.name 
+       return member.name
       });
+      console.log(this.searchedList)
     },
   },
   

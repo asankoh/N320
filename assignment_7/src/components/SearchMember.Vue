@@ -6,9 +6,9 @@
     <label>Select Role:</label>
     <br />
     <label>Designer</label>
-    <input type="radio" v-model="radioSelect" name="radio" value="Designers" />
+    <input type="radio" v-model="radioSelect" name="radio" value="Designer" />
     <label>Developer</label>
-    <input type="radio" v-model="radioSelect" name="radio" value="Developers" />
+    <input type="radio" v-model="radioSelect" name="radio" value="Developer" />
     <label>UI/UX</label>
     <input type="radio" v-model="radioSelect" name="radio" value="UI/UX" />
     <br />
@@ -30,15 +30,7 @@ export default {
   },
   methods: {
     submitData() {
-      const memberFilter = this.members.filter((member) =>{
-        if (this.radioSelect === member.role){
-          return true
-        }else{
-          return false
-        }
-      })
-
-      this.$emit('search-member', this.enteredName, memberFilter);
+      this.$emit('search-member');
     }
   }
 };
