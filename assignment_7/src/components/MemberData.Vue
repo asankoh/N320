@@ -7,7 +7,7 @@
       <p>Phone: {{ phone }}</p>
       <p>Email: {{ email }}</p>
       <p>Team: {{ team }}</p>
-      <button @click="joinBtn(i)">Join {{ enteredName }}</button>
+      <button @click="joinBtn()">Join {{ enteredName }}</button>
 
       <!-- <p v-if="cLevel">Class Rank: {{ cLevel }}</p>
             <p v-if="graduate">Graduated</p> -->
@@ -42,8 +42,8 @@ export default {
     toggleDetails() {
       this.visibleData = !this.visibleData
     },
-    joinBtn(i){
-      this.members=(i+1) ? this.members.filter((x) => x!==1) : this.pushedMembers;
+    joinBtn(){
+      
     }
   }
 }

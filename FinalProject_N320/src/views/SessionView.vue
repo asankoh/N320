@@ -10,7 +10,7 @@
     :sTime="session.sTime"
     :sDay="session.sDay"
     :added="session.added"
-    ></session-data>   
+    @presenter-filter="filteredPresenter"></session-data>   
 </template>
 
 <script>
@@ -128,6 +128,12 @@ export default {
     sessionList: [],
     }
 },
+methods:{
+        filteredPresenter(value){
+          this.sessionList = value
+          console.log("Hello:", value)
+        }
+    }
 }
 </script>
 

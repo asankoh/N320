@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     submitData() {
-      this.$emit('search-member');
+      this.$emit('search-member', this.radioSelect, this.enteredName);
     }
   }
 };

@@ -1,12 +1,12 @@
 <template>
     <section>
-        <h2>{{ title }} <button @click="toggleDetails">{{ visibleData ? "Added" : "Add" }}</button> </h2>
+        <h2>{{ title }} <button @click="addToSession()">{{ visibleData  ? "Added" : "Add" }}</button> </h2>
         <div class="div">
             <h5 @click="filterPresenter(presenter)">Presented By: {{ presenter }}</h5>
             <h5>{{ sDay }} at {{timeConversion(sTime) }}</h5>
         </div>
         <p>{{ desc }}</p>
-        <p @click="filterTags(tags)">Catergories: {{ tags.join(' , ') }} </p>
+        <p  @click="filterTags(tags)">{{ tags.join(' , ') }} </p>
 
 
     </section>
@@ -17,12 +17,11 @@ export default {
     data(){
         return{
           visibleData: false,
-          sessionAmount: this.sessions.length,
-          sessionList: []
         }
     },
     props: {
     sessions: Array,
+    id: Number,
     title: String,
     desc: String,
     presenter: String,
@@ -33,8 +32,15 @@ export default {
     },
     methods: {
     toggleDetails(){
-        this.visibleData=!this.visibleData
     },
+    addToSession(){
+      this.visibleData=!this.visibleData
+      const pushedSession = this.sessions.filter(session => session.title.includes(
+      this.title, this.presenter, this.sTime, this.sDay, this.added));
+       this.$emit('my-sessions', pushedSession)
+      console.log("Data: ", pushedSession)
+      return pushedSession
+      },
     timeConversion(sTime){
       // let newDate = new Date(sTime)
       // console.log(newDate)
@@ -48,7 +54,8 @@ export default {
     filterPresenter() {
   const presenterFilter = this.sessions.filter(session => session.presenter.includes(this.presenter));
   console.log(presenterFilter);
-  return presenterFilter
+  this.$emit('presenter-filter', presenterFilter)
+  return this.presenterFilter
   },
   filterTags() {
     const tagFilter = this.sessions.filter(session => session.tags.includes(this.tags))

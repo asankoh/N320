@@ -1,6 +1,6 @@
 <template>
   <div>
-    <search-member :members="members" @search-member="searchMembersBtn"></search-member>
+    <search-member @search-member="searchMembersBtn"></search-member>
     <div class="memberInfo">
       <member-data
         v-for="member in searchedList"
@@ -123,18 +123,22 @@ export default {
           team: ''
         }
       ],
-      enteredName: "",
       searchedList: [],
       radioSelect: null
     };
   },
   methods: {
-    searchMembersBtn() {
+    searchMembersBtn(radioSelect) {
       this.searchedList = this.members.filter((member) => {
-       return member.name
+       //return member.role == "Designer"
+       return member.role === radioSelect
       });
       console.log(this.searchedList)
+      console.log(this.enteredName)
+
     },
+
+  
   },
   
 }
