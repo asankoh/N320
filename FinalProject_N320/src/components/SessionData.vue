@@ -1,14 +1,13 @@
 <template>
-    <section>
-        <h2>{{ title }} <button @click="addToSession()">{{ visibleData  ? "Added" : "Add" }}</button> </h2>
+  <section>
+      <button v-if="activeFilter" @click="clearFilter()" class="clearBtn">Clear Filter</button>
+        <h2>{{ title }} <button @click="addSession(pushedSession)">{{ visibleData  ? "Added" : "Add" }}</button> </h2>
         <div class="div">
             <h5 @click="filterPresenter(presenter)">Presented By: {{ presenter }}</h5>
             <h5>{{ sDay }} at {{timeConversion(sTime) }}</h5>
         </div>
         <p>{{ desc }}</p>
         <p  @click="filterTags(tags)">{{ tags.join(' , ') }} </p>
-
-
     </section>
 </template>
 
@@ -17,6 +16,7 @@ export default {
     data(){
         return{
           visibleData: false,
+          activeFilter: false
         }
     },
     props: {
@@ -31,15 +31,11 @@ export default {
     added: Boolean,
     },
     methods: {
-    toggleDetails(){
-    },
-    addToSession(){
+    addSession(pushedSession){
       this.visibleData=!this.visibleData
-      const pushedSession = this.sessions.filter(session => session.title.includes(
-      this.title, this.presenter, this.sTime, this.sDay, this.added));
-       this.$emit('my-sessions', pushedSession)
-      console.log("Data: ", pushedSession)
-      return pushedSession
+      this.$emit('add-sessions', pushedSession)
+      // console.log("Data: ", pushedSession)
+      // return pushedSession
       },
     timeConversion(sTime){
       // let newDate = new Date(sTime)
@@ -51,12 +47,16 @@ export default {
         return sTime + `am`
       }
     },
-    filterPresenter() {
-  const presenterFilter = this.sessions.filter(session => session.presenter.includes(this.presenter));
-  console.log(presenterFilter);
-  this.$emit('presenter-filter', presenterFilter)
-  return this.presenterFilter
-  },
+    filterPresenter(presenter) {
+    // const presenterFilter = this.sessions.filter(session => session.presenter.includes(this.presenter));
+    // console.log(presenterFilter)
+    this.activeFilter=!this.activeFilter
+    this.$emit('presenter-filter', presenter, this.activeFilter)
+    },
+    clearFilter(){
+      this.$emit('clear-filter')
+    },
+  
   filterTags() {
     const tagFilter = this.sessions.filter(session => session.tags.includes(this.tags))
     console.log(tagFilter);

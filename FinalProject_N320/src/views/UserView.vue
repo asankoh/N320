@@ -10,17 +10,18 @@
     :sTime="session.sTime"
     :sDay="session.sDay"
     :added="session.added"
-    @my-sessions="mySession"></session-data>
+    @add-sessions="addSession"
+    ></session-data>
 </template>
 
 <script>
 export default {
     data(){
         return{
-            mySessions: [],
         }
     },
     props: {
+    mySessions: Array,
     sessions: Array,
     id: Number,
     title: String,
@@ -32,13 +33,14 @@ export default {
     added: Boolean,
     },
     methods: {
-        mySession(pushedSession){
-            this.mySessions.push(pushedSession)
-            return pushedSession
-        }
-
+//     addSession(pushedSession){
+//     pushedSession = this.sessions.filter(session => session.title.includes(
+//     this.title, this.sTime, this.sDay));
+//     this.pushedSession.push(this.mySessions)
+//     console.log("Add Session:")
+//   }
+//     }
     }
-
 }
 </script>
 

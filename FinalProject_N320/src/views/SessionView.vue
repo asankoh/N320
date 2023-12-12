@@ -1,5 +1,5 @@
 <template>
-  <h4>{{ sessionAmount }}</h4>
+  <h4>{{ sessionAmount }} Sessions Displayed.</h4>
     <session-data v-for="session in sessions"
     :sessions="sessions"
     :key ="session.id"
@@ -10,7 +10,11 @@
     :sTime="session.sTime"
     :sDay="session.sDay"
     :added="session.added"
-    @presenter-filter="filteredPresenter"></session-data>   
+    @presenter-filter="filteredPresenter"
+    @clear-filter="clearFilter"
+    @add-sessions="addSession"></session-data>   
+
+  
 </template>
 
 <script>
@@ -125,14 +129,37 @@ export default {
       }
 
     ],
-    sessionList: [],
+    mySessions: []
     }
 },
 methods:{
-        filteredPresenter(value){
-          this.sessionList = value
-          console.log("Hello:", value)
-        }
+  // retrieveSessions(){
+  //   this.sessions = this.sessions.filter((session) =>{
+  //     return session.title
+  //   })
+  //   console.log("Retrived:" , session.title)
+  // },
+  filteredPresenter(value){
+  this.sessions = this.sessions.filter((session) =>{
+  return session.presenter == value
+  })
+  console.log("Hello:", value)
+  },
+  clearFilter(){
+  console.log("clear filter click?")
+    console.log(this.sessions)
+  },
+  addSession(pushedSession){
+    pushedSession = this.sessions.filter(session => session.title.includes(
+      this.title, this.sTime, this.sDay));
+      console.log("Add Session:", pushedSession)
+    // this.pushedSession.push(this.mySessions)
+  }
+    },
+    computed:{
+      sessionAmount(){
+        return this.sessions.length
+      }
     }
 }
 </script>
@@ -143,5 +170,9 @@ methods:{
       /* background-color: rgba(7, 54, 67, 0.8); */
       background-color: #f6ede2;
       font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    h4{
+      margin-left: 50px;
     }
 </style>

@@ -49,7 +49,12 @@
        this.$emit('my-sessions', pushedSession)
       console.log("Data: ", pushedSession)
       return pushedSession
-      }
+      },
+  filterPresenter() {
+  const presenterFilter = this.sessions.filter(session => session.presenter.includes(this.presenter));
+  console.log(presenterFilter)
+  this.$emit('presenter-filter', presenterFilter)
+  }
     }
 }
     
