@@ -1,4 +1,6 @@
 <template>
+
+<h4>0 Sessions Displayed.</h4>
 <h1>My Sessions: </h1>
 
 <session-data v-for="session in mySessions"
@@ -18,6 +20,7 @@
 export default {
     data(){
         return{
+            mySessions: []
         }
     },
     props: {
@@ -40,7 +43,12 @@ export default {
 //     console.log("Add Session:")
 //   }
 //     }
-    }
+    },
+    // computed: {
+    //     sessionAmount(){
+    //     return this.sessions.length
+    //   }
+    // }
 }
 </script>
 
